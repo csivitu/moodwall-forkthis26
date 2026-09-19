@@ -40,12 +40,12 @@ export function computeDominantMood(notes) {
   const topCount = Math.max(...entries.map(([, count]) => count));
   const topMoods = entries.filter(([, count]) => count === topCount);
 
-  if (topMoods.length > 1) return topMoods.map(([name]) => name); 
-  return topMoods[0][0];
+  if (topMoods.length === 1) return topMoods[0][0];
+  return null;
 }
 
 const BUCKET_COUNT = 5;
-const BUCKET_MS = NOTE_LIFETIME_MS / BUCKET_COUNT; 
+const BUCKET_MS = NOTE_LIFETIME_MS / BUCKET_COUNT;
 
 export function computeTimeline(notes, now = Date.now()) {
   const rawBuckets = Array.from({ length: BUCKET_COUNT }, (_, i) => {
@@ -66,8 +66,8 @@ export function computeTimeline(notes, now = Date.now()) {
 
   for (const note of notes) {
   const ageMs = now - note.createdAt;
-  if (ageMs < 0) continue; 
-  const bucketIndex = Math.min(BUCKET_COUNT - 1, Math.floor(ageMs / BUCKET_MS)); 
+  if (ageMs < 0) continue;
+  const bucketIndex = Math.min(BUCKET_COUNT - 1, Math.floor(ageMs / BUCKET_MS));
   if (bucketIndex >= 0 && bucketIndex < BUCKET_COUNT) {
     rawBuckets[bucketIndex].notes.push(note);
     const mood = note.moodName;
