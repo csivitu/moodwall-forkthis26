@@ -1,7 +1,7 @@
 
 
 :root {
-  
+
   --bg-cream: #F8F6F0;
   --ink-black: #1A1A1A;
   --hot-magenta: #FF2A85;
@@ -31,16 +31,16 @@
 
 body {
   background-color: #F8F6F0;
-  
-  background-image: 
-    
+
+  background-image:
+
     radial-gradient(circle, rgba(26, 26, 26, 0.08) 1.2px, transparent 1.2px),
-    
+
     radial-gradient(circle at 15% 20%, #FAF8F2 0%, transparent 45%),
     radial-gradient(circle at 85% 15%, #F4F0E8 0%, transparent 40%),
     radial-gradient(circle at 30% 80%, #FAF7F0 0%, transparent 50%),
     radial-gradient(circle at 85% 85%, #F3EFE6 0%, transparent 45%),
-    
+
     linear-gradient(135deg, rgba(0, 0, 0, 0.018) 0%, transparent 25%, rgba(255, 255, 255, 0.05) 50%, rgba(0, 0, 0, 0.015) 53%, transparent 75%);
   background-size: 22px 22px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
   color: var(--ink-black);
@@ -355,7 +355,7 @@ body {
 
 .scrapbook-board {
   background-color: #FBF9F4;
-  background-image: 
+  background-image:
     linear-gradient(rgba(180, 195, 215, 0.38) 1px, transparent 1px),
     linear-gradient(90deg, rgba(180, 195, 215, 0.38) 1px, transparent 1px);
   background-size: 16px 16px;
@@ -668,6 +668,10 @@ body {
   background-image: radial-gradient(rgba(180, 83, 9, 0.38) 1.5px, transparent 1.5px);
   background-size: 16px 16px;
   overflow: visible;
+}
+.scrapbook-card:hover{
+    transform: rotate(0deg) translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow-hard-lg);
 }
 
 .scrapbook-pushpin {
