@@ -18,18 +18,18 @@ export function useUserIdentity() {
     }
   });
 
-  const recordReaction = (noteId, reaction) => {
-  setUserReactions((prev) => {
-    const next = { ...prev };
-    if (reaction) {
-      next[noteId] = reaction;
-    } else {
-      delete next[noteId];
-    }
-    localStorage.setItem("vibe_user_reactions", JSON.stringify(next));
-    return prev; 
-  });
-};
+   const recordReaction = (noteId, reaction) => {
+    setUserReactions((prev) => {
+      const next = {...prev };
+      if (reaction && prev[noteId]!== reaction) {
+        next[noteId] = reaction;
+      } else {
+        delete next[noteId];
+      }
+      localStorage.setItem("vibe_user_reactions", JSON.stringify(next));
+      return next;
+    });
+  };
 
   return { userId, userReactions, recordReaction };
 }
