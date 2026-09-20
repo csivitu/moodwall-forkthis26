@@ -32,10 +32,10 @@ export default function PostMoodModal({ isOpen, onClose, onPost, posting, initia
     if (!status.trim()) return;
 
     onPost({
-  status: status.trim(),
-  color: MOODS[0].hex,
-  moodName: selectedMood.name,
-  });
+      status: status.trim(),
+      color: selectedMood.hex,
+      moodName: selectedMood.name,
+    });
     setStatus("");
     onClose();
   }
