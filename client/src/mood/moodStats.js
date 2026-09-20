@@ -40,7 +40,8 @@ export function computeDominantMood(notes) {
   const topCount = Math.max(...entries.map(([, count]) => count));
   const topMoods = entries.filter(([, count]) => count === topCount);
 
-  if (topMoods.length > 1) return topMoods.map(([name]) => name); 
+  // a tie has no single winner, so nobody gets the crown
+  if (topMoods.length > 1) return null;
   return topMoods[0][0];
 }
 
