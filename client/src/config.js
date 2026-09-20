@@ -1,3 +1,4 @@
 export const API_BASE = "/api/notes";
-export const NOTE_LIFETIME_MS = 4 * 60 * 60 * 1000;
+// must match the server's `interval '5 hours'` window in GET /api/notes
+export const NOTE_LIFETIME_MS = 5 * 60 * 60 * 1000;
 export const POLL_INTERVAL_MS = 5000; 
