@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { API_BASE, NOTE_LIFETIME_MS, POLL_INTERVAL_MS } from "../config.js";
 
 export function useNotes(recordReaction) {
@@ -6,7 +6,6 @@ export function useNotes(recordReaction) {
   const [loading, setLoading] = useState(true);
   const [posting, setPosting] = useState(false);
   const [error, setError] = useState(null);
-  const shuffleSeedRef = useRef(Math.random());
 
   const fetchNotes = useCallback(async () => {
   try {
@@ -14,21 +13,8 @@ export function useNotes(recordReaction) {
     if (!res.ok) throw new Error("Failed to load the wall.");
     const data = await res.json();
 
-    const hashString = (str) => {
-      let h = 0;
-      for (let i = 0; i < str.length; i++) {
-        h = (h * 31 + str.charCodeAt(i)) | 0; 
-      }
-      return h;
-    };
-
-    const ord = [...data].sort((a, b) => {
-      const hashA = hashString(a.id + shuffleSeedRef.current);
-      const hashB = hashString(b.id + shuffleSeedRef.current);
-      return hashA - hashB;
-    });
-
-    setNotes(ord);
+    // the API already returns created_at DESC, so keep that order
+    setNotes(data);
     setError(null);
   } catch (err) {
     setError(err.message);
