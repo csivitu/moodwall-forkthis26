@@ -27,7 +27,7 @@ export function useUserIdentity() {
       delete next[noteId];
     }
     localStorage.setItem("vibe_user_reactions", JSON.stringify(next));
-    return prev; 
+    return next;
   });
 };
 
