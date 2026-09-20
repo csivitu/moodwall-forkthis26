@@ -646,12 +646,23 @@ body {
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
 }
 
+.scrapbook-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: var(--shadow-hard-lg);
+  z-index: 5;
+}
+
 .scrapbook-card--pink {
   background-color: var(--pink-card);
   transform: rotate(2deg);
   background-image: linear-gradient(rgba(225, 29, 72, 0.2) 1px, transparent 1px),
     linear-gradient(90deg, rgba(225, 29, 72, 0.2) 1px, transparent 1px);
   background-size: 15px 15px;
+}
+
+.scrapbook-card--pink:hover {
+  transform: rotate(2deg) translateY(-4px) scale(1.02);
+  box-shadow: var(--shadow-hard-lg);
 }
 
 .scrapbook-card--blue {
@@ -662,12 +673,22 @@ body {
   background-size: 15px 15px;
 }
 
+.scrapbook-card--blue:hover {
+  transform: rotate(-1.5deg) translateY(-4px) scale(1.02);
+  box-shadow: var(--shadow-hard-lg);
+}
+
 .scrapbook-card--yellow {
   background-color: var(--yellow-card);
   transform: rotate(2.5deg);
   background-image: radial-gradient(rgba(180, 83, 9, 0.38) 1.5px, transparent 1.5px);
   background-size: 16px 16px;
   overflow: visible;
+}
+
+.scrapbook-card--yellow:hover {
+  transform: rotate(2.5deg) translateY(-4px) scale(1.02);
+  box-shadow: var(--shadow-hard-lg);
 }
 
 .scrapbook-pushpin {
