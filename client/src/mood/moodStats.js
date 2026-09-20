@@ -37,10 +37,12 @@ export function computeDominantMood(notes) {
   }
 
   const entries = Object.entries(counts);
+  if (entries.length === 0) return null;
   const topCount = Math.max(...entries.map(([, count]) => count));
+  if (topCount <= 0) return null;
   const topMoods = entries.filter(([, count]) => count === topCount);
 
-  if (topMoods.length > 1) return topMoods.map(([name]) => name); 
+  if (topMoods.length > 1) return null; 
   return topMoods[0][0];
 }
 
