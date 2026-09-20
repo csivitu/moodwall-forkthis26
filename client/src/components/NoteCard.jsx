@@ -14,11 +14,11 @@ export default function NoteCard({ note, userReaction, onReact }) {
   const stampText = formatStampDuration(note.createdAt);
 
   const isBlue =
-    mood.name === "Low Power" ||
+    mood.name === "LOW POWER" ||
     note.color === "#34CDFC";
 
   const isYellow =
-    mood.name === "Tiny Crisis" ||
+    mood.name === "TINY CRISIS" ||
     note.color === "#FFE359";
 
   function renderReactionButtons() {
