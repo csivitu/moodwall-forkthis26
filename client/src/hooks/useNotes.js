@@ -63,26 +63,27 @@ export function useNotes(recordReaction) {
     }
   };
 
-  const handleReact = async (id, reaction) => {
+    const handleReact = async (id, reaction) => {
+    if (recordReaction) recordReaction(id, reaction); // <- ADD THIS LINE AT TOP
     try {
       const res = await fetch(`${API_BASE}/${id}/react`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ reaction }),
-});
+      });
+
       if (!res.ok) throw new Error("Couldn't react to that note.");
       const updated = await res.json();
       setNotes((prev) => prev.map((n) => (n.id === updated.id ? updated : n)));
 
       if (recordReaction) {
-        recordReaction(id, updated.userReaction);
+        recordReaction(id, updated.userReaction || reaction);
       }
     } catch (err) {
       setError(err.message);
     }
   };
-
   const activeNotes = notes.filter((n) => Date.now() - n.createdAt <= NOTE_LIFETIME_MS);
 
   return {
