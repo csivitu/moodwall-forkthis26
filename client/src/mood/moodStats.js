@@ -40,7 +40,8 @@ export function computeDominantMood(notes) {
   const topCount = Math.max(...entries.map(([, count]) => count));
   const topMoods = entries.filter(([, count]) => count === topCount);
 
-  if (topMoods.length > 1) return topMoods.map(([name]) => name); 
+  // a crown means "strictly the most posted", so a tie has no winner
+  if (topMoods.length > 1) return null;
   return topMoods[0][0];
 }
 
